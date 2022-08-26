@@ -17,6 +17,8 @@ const PostContainer = (props: Props) => {
     const title = prompt();
     await createPost({ title, body: title } as IPost);
   };
+  const [updatePost] = postAPI.useUpdatePostMutation();
+  const [deletePost] = postAPI.useDeletePostMutation();
 
   return (
     <>
@@ -27,7 +29,12 @@ const PostContainer = (props: Props) => {
           <button onClick={() => refetch()}>refresh</button>
           <button onClick={handleCreatePost}>add post</button>
           {posts.map((post) => (
-            <PostItem key={post.id} post={post} />
+            <PostItem
+              key={post.id}
+              post={post}
+              remove={deletePost}
+              update={updatePost}
+            />
           ))}
         </>
       )}

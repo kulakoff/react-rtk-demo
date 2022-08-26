@@ -18,7 +18,7 @@ const PostItem: FC<PostItemProps> = ({ post, update, remove }) => {
   };
 
   return (
-    <div className="post" onDoubleClick={}>
+    <div className="post" onDoubleClick={handleUpdate}>
       {post.id} . {post.title}
       <button style={{ marginLeft: "1rem" }} onClick={hanleRemove}>
         del
