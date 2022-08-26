@@ -3,13 +3,26 @@ import { IPost } from "../models/IPost";
 
 interface PostItemProps {
   post: IPost;
+  update: (post: IPost) => void;
+  remove: (post: IPost) => void;
 }
 
-const PostItem: FC<PostItemProps> = ({ post }) => {
+const PostItem: FC<PostItemProps> = ({ post, update, remove }) => {
+  const hanleRemove = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    remove(post);
+  };
+  const handleUpdate = (event: React.MouseEvent) => {
+    const title = prompt() || "";
+    update({ ...post, title } as IPost);
+  };
+
   return (
-    <div className="post">
+    <div className="post" onDoubleClick={}>
       {post.id} . {post.title}
-      <button>del</button>
+      <button style={{ marginLeft: "1rem" }} onClick={hanleRemove}>
+        del
+      </button>
     </div>
   );
 };

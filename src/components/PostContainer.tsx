@@ -1,3 +1,4 @@
+import { IPost } from "../models/IPost";
 import { postAPI } from "../services/PostService";
 import PostItem from "./PostItem";
 
@@ -9,7 +10,14 @@ const PostContainer = (props: Props) => {
     isLoading,
     error,
     refetch,
-  } = postAPI.useFetchAllPostsQuery(5);
+  } = postAPI.useFetchAllPostsQuery(15);
+  const [createPost, { error: createError, isLoading: isCreateLoading }] =
+    postAPI.useCreatePostMutation();
+  const handleCreatePost = async () => {
+    const title = prompt();
+    await createPost({ title, body: title } as IPost);
+  };
+
   return (
     <>
       {isLoading && <h6>Загрузка ...</h6>}
@@ -17,6 +25,7 @@ const PostContainer = (props: Props) => {
       {posts && (
         <>
           <button onClick={() => refetch()}>refresh</button>
+          <button onClick={handleCreatePost}>add post</button>
           {posts.map((post) => (
             <PostItem key={post.id} post={post} />
           ))}
