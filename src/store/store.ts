@@ -1,4 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { createLogger } from 'redux-logger'
 import { postAPI } from "../services/PostService";
 import userReducer from "../store/reducers/UserSlice";
 
@@ -10,7 +11,7 @@ const rootReducer = combineReducers({
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware)=> getDefaultMiddleware().concat(postAPI.middleware)
+    middleware: (getDefaultMiddleware)=> getDefaultMiddleware().concat(postAPI.middleware,createLogger())
   });
 };
 

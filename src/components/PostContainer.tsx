@@ -1,3 +1,4 @@
+import { ThreeCircles } from "react-loader-spinner";
 import { IPost } from "../models/IPost";
 import { postAPI } from "../services/PostService";
 import PostItem from "./PostItem";
@@ -10,7 +11,7 @@ const PostContainer = (props: Props) => {
     isLoading,
     error,
     refetch,
-  } = postAPI.useFetchAllPostsQuery(15);
+  } = postAPI.useFetchAllPostsQuery(100);
   const [createPost, { error: createError, isLoading: isCreateLoading }] =
     postAPI.useCreatePostMutation();
   const handleCreatePost = async () => {
@@ -18,12 +19,26 @@ const PostContainer = (props: Props) => {
     title === "" && alert("Заголовок не может быть пустым");
     title !== "" && (await createPost({ title, body: title } as IPost));
   };
-  const [updatePost] = postAPI.useUpdatePostMutation();
-  const [deletePost] = postAPI.useDeletePostMutation();
+  const [updatePost, { isLoading: isUpdateLoading }] =
+    postAPI.useUpdatePostMutation();
+  const [deletePost, { isLoading: isDeleteLoading }] =
+    postAPI.useDeletePostMutation();
 
   return (
-    <div className="postContainer">
-      {isLoading && <h6>Загрузка ...</h6>}
+    <div className="App">
+      <ThreeCircles
+        height="100"
+        width="100"
+        color="teal"
+        wrapperStyle={{}}
+        wrapperClass="App"
+        visible={isLoading}
+        ariaLabel="three-circles-rotating"
+        outerCircleColor=""
+        innerCircleColor=""
+        middleCircleColor=""
+      />
+
       {error && <h6>{"Ошибка"}</h6>}
       {posts && (
         <>

@@ -2,12 +2,7 @@
   "posts": [
     {
       "id": 1,
-      "title": "trtrtr",
-      "author": "typicode"
-    },
-    {
-      "id": 2,
-      "title": "json-server-2",
+      "title": "json-server-1",
       "author": "typicode"
     },
     {
@@ -54,6 +49,11 @@
       "title": "new post body",
       "body": "new post body",
       "id": 12
+    },
+    {
+      "title": "qqq",
+      "body": "qqq",
+      "id": 13
     }
   ],
   "comments": [
