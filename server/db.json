@@ -2,7 +2,7 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server-1",
+      "title": "trtrtr",
       "author": "typicode"
     },
     {
@@ -13,11 +13,6 @@
     {
       "id": 3,
       "title": "json-server-3",
-      "author": "typicode"
-    },
-    {
-      "id": 4,
-      "title": "json-server-4",
       "author": "typicode"
     },
     {
@@ -32,7 +27,7 @@
     },
     {
       "id": 7,
-      "title": "json-server-7",
+      "title": "example message",
       "author": "typicode"
     },
     {
@@ -42,7 +37,7 @@
     },
     {
       "id": 9,
-      "title": "json-server-9",
+      "title": "post-title-test",
       "author": "typicode"
     },
     {

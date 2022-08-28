@@ -15,19 +15,26 @@ const PostContainer = (props: Props) => {
     postAPI.useCreatePostMutation();
   const handleCreatePost = async () => {
     const title = prompt();
-    await createPost({ title, body: title } as IPost);
+    title === "" && alert("Заголовок не может быть пустым");
+    title !== "" && (await createPost({ title, body: title } as IPost));
   };
   const [updatePost] = postAPI.useUpdatePostMutation();
   const [deletePost] = postAPI.useDeletePostMutation();
 
   return (
-    <>
+    <div className="postContainer">
       {isLoading && <h6>Загрузка ...</h6>}
       {error && <h6>{"Ошибка"}</h6>}
       {posts && (
         <>
-          <button onClick={() => refetch()}>refresh</button>
-          <button onClick={handleCreatePost}>add post</button>
+          <div className="postActions">
+            <button className="postActionBtn" onClick={() => refetch()}>
+              refresh
+            </button>
+            <button className="postActionBtn" onClick={handleCreatePost}>
+              add post
+            </button>
+          </div>
           {posts.map((post) => (
             <PostItem
               key={post.id}
@@ -41,7 +48,7 @@ const PostContainer = (props: Props) => {
       {/* {posts?.map((post) => (
         <PostItem key={post.id} post={post} />
       ))} */}
-    </>
+    </div>
   );
 };
 

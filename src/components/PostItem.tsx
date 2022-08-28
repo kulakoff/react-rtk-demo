@@ -13,14 +13,15 @@ const PostItem: FC<PostItemProps> = ({ post, update, remove }) => {
     remove(post);
   };
   const handleUpdate = (event: React.MouseEvent) => {
-    const title = prompt() || "";
-    update({ ...post, title } as IPost);
+    const title = prompt();
+    if (title === "") alert("Заголовок не может быть пустым");
+    if (title !== "") update({ ...post, title } as IPost);
   };
 
   return (
     <div className="post" onDoubleClick={handleUpdate}>
       {post.id} . {post.title}
-      <button style={{ marginLeft: "1rem" }} onClick={hanleRemove}>
+      <button className="postActionBtn" onClick={hanleRemove}>
         del
       </button>
     </div>

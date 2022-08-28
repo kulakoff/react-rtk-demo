@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+.App {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -35,4 +35,26 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.post {
+  padding: 20px;
+  border: 2px solid teal;
+  margin-top: 15px;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.postActions {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.postActionBtn {
+  background-color:transparent;
+  border:none;
+  color: rgb(180, 11, 242);
+  font-size: 1.5rem;
 }
